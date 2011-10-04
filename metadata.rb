@@ -5,7 +5,11 @@ description      "Installs and configures device-mapper-multipath"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 recommends       "iscsi"
 recommends       "dbench"
-version          "0.0.4"
+version          "0.0.5"
+
+%w{ redhat centos scientific }.each do |os|
+  supports os, ">= 5.0"
+end
 
 attribute "multipath/blacklist_regex",
   :display_name => "multipath/blacklist_regex",
