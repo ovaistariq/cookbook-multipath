@@ -1,5 +1,6 @@
-DESCRIPTION:
-===========
+# Multipath [![Build Status](https://secure.travis-ci.org/atomic-penguin/multipath.png?branch=master)](http://travis-ci.org/atomic-penguin/multipath)
+
+## Description
 
   This cookbook provides provides the ability to configure Device Mapper 
 Multipath MPIO for Fibre-Channel and iSCSI storage attached systems.
@@ -8,20 +9,17 @@ Multipath MPIO for Fibre-Channel and iSCSI storage attached systems.
 within this cookbook.  Included vendor-specific templates are for
 Equallogic iSCSI, EMC Clariion, and Dell Powervault MDxxxx storage arrays.
 
-REQUIREMENTS:
-=============
+## Requirements
 
-Recommended Cookbooks
----------------------
+### Recommended Cookbooks
 
   * iscsi
   * dbench
 
-ATTRIBUTES:
+## Attributes
 ===========
 
-multipath.conf
------------
+### multipath.conf template
 
   * multipath (namespace)
     - ["blacklist_regex"]: An array of regular expressions to blacklist. Default '^sd[a]$'
@@ -29,8 +27,7 @@ multipath.conf
     - ["aliases"]: A colon separated mapping of WWID to assign a friendly name.  Default empty.
     - ["storage_type"]: Select a vendor-specific multipath template (equallogic, powervault, clariion, default)
 
-USAGE:
-======
+## Usage
 
   Set node specific overrides, and add recipe["multipath"] to the run_list
 
@@ -56,10 +53,13 @@ through u03 are "friendly" name aliases for the storage paths.
 }
 ```
 
-LICENSE AND AUTHOR:
-===================
+### multipath::undo recipe
 
-Copyright 2010-2011, Eric G. Wolfe
+A run-once recipe to undo the default recipe.  Inspired by the `annoyances` cookbook.
+
+## License and Author
+
+Copyright 2010-2012, Eric G. Wolfe
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

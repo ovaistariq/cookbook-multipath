@@ -2,7 +2,7 @@
 # Cookbook Name:: multipath
 # Recipe:: default
 #
-# Copyright 2010, Eric G. Wolfe
+# Copyright 2012, Eric G. Wolfe
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,18 +17,18 @@
 # limitations under the License.
 #
 
-node['multipath']['packages'].each do |mpath_pkg|
-  package mpath_pkg
-end
-
-template "/etc/multipath.conf" do
-  source "#{node["multipath"]["storage_type"]}-multipath.conf.erb"
-  owner "root"
-  group "root"
-  mode "0644"
-  notifies :restart, resources(:service => node['multipath']['service'])
-end
-
 service node['multipath']['service'] do
-  action [ :enable, :start ]
+  action [ :disable, :stop ]
+end
+
+node['multipath']['packages'].each do |mpath_pkg|
+  package mpath_pkg do
+    action :remove
+  end
+end
+
+ruby_block "remove multipath::undo from run list" do
+  block do
+    node.run_list.remove("recipe[multipath::undo]")
+  end
 end
