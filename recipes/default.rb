@@ -21,14 +21,15 @@ node['multipath']['packages'].each do |mpath_pkg|
   package mpath_pkg
 end
 
+service node['multipath']['service'] do
+  supports :restart => true
+  action [ :enable, :start ]
+end
+
 template "/etc/multipath.conf" do
   source "#{node["multipath"]["storage_type"]}-multipath.conf.erb"
   owner "root"
   group "root"
   mode "0644"
   notifies :restart, resources(:service => node['multipath']['service'])
-end
-
-service node['multipath']['service'] do
-  action [ :enable, :start ]
 end

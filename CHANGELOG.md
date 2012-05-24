@@ -1,3 +1,7 @@
+## v0.0.8
+
+* Correct resource ordering problem with service/notify
+
 ## v0.0.7
 
 * Fix Travis badge on README

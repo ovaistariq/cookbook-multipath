@@ -5,7 +5,7 @@ description      "Installs and configures device-mapper-multipath"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 recommends       "iscsi"
 recommends       "dbench"
-version          "0.0.7"
+version          "0.0.8"
 
 %w{ redhat centos scientific amazon oracle }.each do |os|
   supports os, ">= 5.0"
