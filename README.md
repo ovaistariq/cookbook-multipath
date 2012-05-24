@@ -1,4 +1,4 @@
-# Multipath [![Build Status](https://secure.travis-ci.org/atomic-penguin/multipath.png?branch=master)](http://travis-ci.org/atomic-penguin/multipath)
+# Multipath [![Build Status](https://secure.travis-ci.org/atomic-penguin/cookbook-multipath.png?branch=master)](http://travis-ci.org/atomic-penguin/cookbook-multipath)
 
 ## Description
 
