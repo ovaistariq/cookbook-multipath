@@ -1,3 +1,8 @@
+## v0.0.7
+
+* Fix Travis badge on README
+* Add chefignore file 
+
 ## v0.0.6
 
 * Add package/service attributes

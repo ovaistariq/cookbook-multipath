@@ -17,7 +17,6 @@ Equallogic iSCSI, EMC Clariion, and Dell Powervault MDxxxx storage arrays.
   * dbench
 
 ## Attributes
-===========
 
 ### multipath.conf template
 
@@ -34,7 +33,7 @@ Equallogic iSCSI, EMC Clariion, and Dell Powervault MDxxxx storage arrays.
 Example multipath node configuration for an EMC Clariion array. The keys, u01
 through u03 are "friendly" name aliases for the storage paths.
 
-```
+```json
 "normal": {
   "multipath": {
       "storage_type": "clariion",
