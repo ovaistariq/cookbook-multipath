@@ -28,7 +28,7 @@ attribute "multipath/blacklist_wwid",
 
 attribute "multipath/storage_type",
   :display_name => "multipath/storage_type",
-  :choice => [ "default", "equallogic", "clariion", "powervault" ],
+  :choice => [ "default", "equallogic", "clariion", "powervault", "netapp" ],
   :description => "default",
   :required => "optional",
   :default => "default"
