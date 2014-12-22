@@ -6,6 +6,7 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 recommends       "iscsi"
 recommends       "dbench"
 version          "0.0.8"
+name             "multipath"
 
 %w{ redhat centos scientific amazon oracle }.each do |os|
   supports os, ">= 5.0"
