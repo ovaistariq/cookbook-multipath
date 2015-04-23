@@ -1,3 +1,4 @@
+name             "multipath"
 maintainer       "Eric G. Wolfe"
 maintainer_email "wolfe21@marshall.edu"
 license          "Apache 2.0"
@@ -5,7 +6,7 @@ description      "Installs and configures device-mapper-multipath"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 recommends       "iscsi"
 recommends       "dbench"
-version          "0.0.8"
+version          "0.0.9"
 
 %w{ redhat centos scientific amazon oracle }.each do |os|
   supports os, ">= 5.0"
