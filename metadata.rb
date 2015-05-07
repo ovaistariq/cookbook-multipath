@@ -1,3 +1,4 @@
+name             'multipath'
 maintainer       "Eric G. Wolfe"
 maintainer_email "wolfe21@marshall.edu"
 license          "Apache 2.0"
