@@ -1,3 +1,9 @@
+## v0.0.9
+
+* Add support for PureStorage SAN
+* Add test-kitchen tests
+* Fix issues reported by foodcritic
+
 ## v0.0.8
 
 * Correct resource ordering problem with service/notify
@@ -5,7 +11,7 @@
 ## v0.0.7
 
 * Fix Travis badge on README
-* Add chefignore file 
+* Add chefignore file
 
 ## v0.0.6
 

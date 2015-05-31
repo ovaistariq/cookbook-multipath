@@ -1,11 +1,14 @@
-maintainer       "Eric G. Wolfe"
-maintainer_email "wolfe21@marshall.edu"
+name             "multipath"
+maintainer       "Ovais Tariq"
+maintainer_email "me@ovaistariq.net"
 license          "Apache 2.0"
 description      "Installs and configures device-mapper-multipath"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 recommends       "iscsi"
 recommends       "dbench"
-version          "0.0.8"
+version          "0.0.9"
+source_url       "https://github.com/atomic-penguin/cookbook-multipath"
+issues_url       "https://github.com/atomic-penguin/cookbook-multipath/issues"
 
 %w{ redhat centos scientific amazon oracle }.each do |os|
   supports os, ">= 5.0"

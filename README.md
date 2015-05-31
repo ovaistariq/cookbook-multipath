@@ -2,12 +2,13 @@
 
 ## Description
 
-  This cookbook provides provides the ability to configure Device Mapper 
+  This cookbook provides provides the ability to configure Device Mapper
 Multipath MPIO for Fibre-Channel and iSCSI storage attached systems.
 
-  A generic template, as well as three vendor-specific templates are included
+  A generic template, as well as four vendor-specific templates are included
 within this cookbook.  Included vendor-specific templates are for
-Equallogic iSCSI, EMC Clariion, and Dell Powervault MDxxxx storage arrays.
+Equallogic iSCSI, EMC Clariion, Dell Powervault MDxxxx and PureStorage
+storage arrays.
 
 ## Requirements
 
@@ -58,6 +59,7 @@ A run-once recipe to undo the default recipe.  Inspired by the `annoyances` cook
 
 ## License and Author
 
+Copyright 2015, Ovais Tariq <me@ovaistariq.net>
 Copyright 2010-2012, Eric G. Wolfe
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -71,4 +73,3 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-

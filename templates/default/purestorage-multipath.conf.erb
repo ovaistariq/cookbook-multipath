@@ -1,0 +1,44 @@
+# Template dropped by Chef for <%= node["fqdn"] %>
+# Local modifications will be overwritten
+
+defaults {
+  user_friendly_names yes
+}
+
+blacklist {
+  <% node["multipath"]["blacklist_wwid"].each do |bl_wwid| -%>
+  wwid <%= bl_wwid %>
+  <% end -%>
+  <% node["multipath"]["blacklist_regex"].each do |blacklist_device| -%>
+  devnode "<%= blacklist_device %>"
+  <% end -%>
+  devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+  devnode "^hd[a-z][[0-9]*]"
+  devnode "^cciss!c[0-9]d[0-9]*[p[0-9]*]"
+}
+
+devices {
+  device {
+    vendor "PURE"
+    path_selector "round-robin 0"
+    path_grouping_policy multibus
+    rr_min_io 1
+    path_checker tur
+    fast_io_fail_tmo 10
+    dev_loss_tmo 30
+    no_path_retry 0
+    getuid_callout "/lib/udev/scsi_id --whitelisted --device=/dev/%n"
+  }
+}
+
+<% unless node["multipath"]["aliases"].empty? -%>
+multipaths {
+<% node["multipath"]["aliases"].each do |alias_def| -%>
+  <% alias_arr = alias_def.split(/:/) -%>
+  multipath {
+    wwid <%= alias_arr[1] %>
+    alias <%= alias_arr[0] %>
+  }
+<% end -%>
+}
+<% end -%>
