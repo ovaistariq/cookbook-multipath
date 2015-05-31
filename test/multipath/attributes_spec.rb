@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: nfs
-# Test:: attributes_spec 
+# Test:: attributes_spec
 #
 # Author:: Fletcher Nichol
 # Author:: Eric G. Wolfe
@@ -39,11 +39,11 @@ describe 'Multipath::Attributes::Default' do
     end
 
     it "sets the package list to device-mapper-multipath" do
-      @node[attr_ns]['packages'] = %w{ device-mapper-multipath }
+      @node.default[attr_ns]['packages'] = %w{ device-mapper-multipath }
     end
 
     it "sets the server service to multipathd" do
-      @node[attr_ns]['service'].must_equal "multipathd"
+      expect(@node[attr_ns]['service']).to eq("multipathd")
     end
   end
 
@@ -53,11 +53,11 @@ describe 'Multipath::Attributes::Default' do
     end
 
     it "sets the package list to device-mapper-multipath" do
-      @node[attr_ns]['packages'] = %w{ device-mapper-multipath }
+      @node.default[attr_ns]['packages'] = %w{ device-mapper-multipath }
     end
 
     it "sets the service to multipathd" do
-      @node[attr_ns]['service'].must_equal "multipathd"
+      expect(@node[attr_ns]['service']).to eq("multipathd")
     end
   end
 
@@ -67,11 +67,11 @@ describe 'Multipath::Attributes::Default' do
     end
 
     it "sets a package list to multipath-tools" do
-      @node[attr_ns]['packages'].must_equal %w{ multipath-tools }
+      expect(@node.default[attr_ns]['packages']).to eq(%w{ multipath-tools })
     end
 
     it "sets the service to multipath-tools" do
-      @node[attr_ns]['service'].must_equal "multipath-tools"
+      expect(@node[attr_ns]['service']).to eq("multipath-tools")
     end
   end
 end
