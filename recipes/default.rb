@@ -31,5 +31,5 @@ template "/etc/multipath.conf" do
   owner "root"
   group "root"
   mode "0644"
-  notifies :restart, resources(:service => node['multipath']['service'])
+  notifies :restart, "service[#{node['multipath']['service']}]"
 end

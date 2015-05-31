@@ -1,0 +1,18 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+- name: centos-6.4
+
+suites:
+- name: default
+  run_list:
+    - recipe[multipath::default]
+  attributes:
+    multipath:
+      storage_type: "purestorage"
+      aliases: [ "mysql:3624a937017bcaa64842651bf00015fea" ]
