@@ -59,7 +59,7 @@ A run-once recipe to undo the default recipe.  Inspired by the `annoyances` cook
 
 ## License and Author
 
-Copyright 2015, Ovais Tariq <me@ovaistariq.net> 
+Copyright 2015, Ovais Tariq <me@ovaistariq.net>  
 Copyright 2010-2012, Eric G. Wolfe
 
 Licensed under the Apache License, Version 2.0 (the "License");
