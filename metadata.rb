@@ -7,8 +7,6 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 recommends       "iscsi"
 recommends       "dbench"
 version          "0.0.9"
-source_url       "https://github.com/atomic-penguin/cookbook-multipath"
-issues_url       "https://github.com/atomic-penguin/cookbook-multipath/issues"
 
 %w{ redhat centos scientific amazon oracle }.each do |os|
   supports os, ">= 5.0"
