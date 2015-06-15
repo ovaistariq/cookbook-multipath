@@ -19,3 +19,40 @@ suites:
     multipath:
       storage_type: "purestorage"
       aliases: [ "mysql:3624a937017bcaa64842651bf00015fea" ]
+- name: custom
+  run_list:
+    - recipe[multipath::default]
+  attributes:
+    multipath:
+      defaults:
+        udev_dir: '/dev'
+        find_multipaths: 'yes'
+        polling_interval: '15'
+        path_selector: '"round-robin 0"'
+        user_friendly_names: 'yes'
+        queue_without_daemon: 'no'
+        max_fds: 'max'
+        uid: '0'
+        gid: '0'
+        mode: '0600'
+      devices: 
+        - vendor: '"COMPAQ"'
+          product: '"HSV101 \(C\)COMPAQ"'
+          path_grouping_policy: 'group_by_prio'
+          getuid_callout: '"/sbin/scsi_id --whitelisted --replace-whitespace --device=/dev/%n"'
+          path_checker: 'tur'
+          prio: 'hds'
+          failback: 'immediate'
+          rr_weight: 'uniform'
+          no_path_retry: '10'
+          rr_min_io_rq: '16'
+        - vendor: '"HP"'
+          product: '"HSV200"'
+          path_grouping_policy: 'group_by_prio'
+          getuid_callout: '"/sbin/scsi_id --whitelisted --replace-whitespace --device=/dev/%n"'
+          path_checker: 'tur'
+          prio: 'hds'
+          failback: 'immediate'
+          rr_weight: 'uniform'
+          no_path_retry: '10'
+          rr_min_io_rq: '16'

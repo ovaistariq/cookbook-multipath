@@ -2,7 +2,9 @@
 # Local modifications will be overwritten
 
 defaults {
-  user_friendly_names yes
+  <% node["multipath"]["defaults"].each do |param,param_value| -%>
+  <%= param %> <%= param_value %>
+  <% end -%>
 }
 
 blacklist {
@@ -26,5 +28,17 @@ multipaths {
     alias <%= alias_arr[0] %>
   }
 <% end -%>
+}
+<% end -%>
+
+<% unless node["multipath"]["devices"].empty? -%>
+devices {
+  <% node["multipath"]["devices"].each do |device| %>
+  device {
+    <% device.each do |param,param_value| %>
+    <%= param %> <%= param_value %>
+    <% end -%>
+  }
+  <% end -%>
 }
 <% end -%>

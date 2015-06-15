@@ -29,3 +29,8 @@ default['multipath']['blacklist_regex'] = [ "^sd[a]$" ]
 default['multipath']['blacklist_wwid'] = Array.new
 default['multipath']['storage_type'] = "default"
 default['multipath']['aliases'] = Array.new
+default['multipath']['defaults'] = {
+  "user_friendly_names" => "yes"
+}
+
+default['multipath']['devices'] = Array.new
