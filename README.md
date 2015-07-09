@@ -5,7 +5,7 @@
   This cookbook provides provides the ability to configure Device Mapper
 Multipath MPIO for Fibre-Channel and iSCSI storage attached systems.
 
-  A generic template, as well as four vendor-specific templates are included
+  A generic template, a customizable template, as well as four vendor-specific templates are included
 within this cookbook.  Included vendor-specific templates are for
 Equallogic iSCSI, EMC Clariion, Dell Powervault MDxxxx and PureStorage
 storage arrays.
@@ -25,7 +25,9 @@ storage arrays.
     - ["blacklist_regex"]: An array of regular expressions to blacklist. Default '^sd[a]$'
     - ["blacklist_wwid"]: An array of World-Wide Identifiers (WWID) to blacklist.  Default empty.
     - ["aliases"]: A colon separated mapping of WWID to assign a friendly name.  Default empty.
-    - ["storage_type"]: Select a vendor-specific multipath template (equallogic, powervault, clariion, default)
+    - ["storage_type"]: Select a vendor-specific multipath template (equallogic, powervault, clariion, default, customized)
+
+### Customized 
 
 ## Usage
 

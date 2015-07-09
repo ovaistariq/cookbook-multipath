@@ -2,7 +2,9 @@
 # Local modifications will be overwritten
 
 defaults {
-  user_friendly_names yes
+  <% node["multipath"]["defaults"].each do |param,param_value| -%>
+  <%= param %> <%= param_value %>
+  <% end -%>
 }
 
 blacklist {
@@ -28,3 +30,14 @@ multipaths {
 <% end -%>
 }
 <% end -%>
+
+devices {
+  <% node["multipath"]["devices"].each do |product,parameters| %>
+  device {
+    product "<%= product %>"
+    <% parameters.each do |param,param_value| %>
+    <%= param %> <%= param_value %>
+    <% end -%>
+  }
+  <% end -%>
+}
