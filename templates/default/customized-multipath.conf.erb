@@ -1,0 +1,43 @@
+# Template dropped by Chef for <%= node["fqdn"] %>
+# Local modifications will be overwritten
+
+defaults {
+  <% node["multipath"]["defaults"].each do |param,param_value| -%>
+  <%= param %> <%= param_value %>
+  <% end -%>
+}
+
+blacklist {
+  <% node["multipath"]["blacklist_wwid"].each do |bl_wwid| -%>
+  wwid <%= bl_wwid %>
+  <% end -%>
+  <% node["multipath"]["blacklist_regex"].each do |bl_device| -%>
+  devnode "<%= bl_device %>"
+  <% end -%>
+  devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+  devnode "^hd[a-z][[0-9]*]"
+  devnode "^cciss!c[0-9]d[0-9]*[p[0-9]*]"
+}
+
+<% unless node["multipath"]["aliases"].empty? -%>
+multipaths {
+<% node["multipath"]["aliases"].each do |alias_def| -%>
+  <% alias_arr = alias_def.split(/:/) -%>
+  multipath {
+    wwid <%= alias_arr[1] %>
+    alias <%= alias_arr[0] %>
+  }
+<% end -%>
+}
+<% end -%>
+
+devices {
+  <% node["multipath"]["devices"].each do |product,parameters| %>
+  device {
+    product "<%= product %>"
+    <% parameters.each do |param,param_value| %>
+    <%= param %> <%= param_value %>
+    <% end -%>
+  }
+  <% end -%>
+}

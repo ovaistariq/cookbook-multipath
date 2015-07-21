@@ -5,7 +5,7 @@
   This cookbook provides provides the ability to configure Device Mapper
 Multipath MPIO for Fibre-Channel and iSCSI storage attached systems.
 
-  A generic template, as well as four vendor-specific templates are included
+  A generic template, a customizable template, as well as four vendor-specific templates are included
 within this cookbook.  Included vendor-specific templates are for
 Equallogic iSCSI, EMC Clariion, Dell Powervault MDxxxx and PureStorage
 storage arrays.
@@ -25,7 +25,42 @@ storage arrays.
     - ["blacklist_regex"]: An array of regular expressions to blacklist. Default '^sd[a]$'
     - ["blacklist_wwid"]: An array of World-Wide Identifiers (WWID) to blacklist.  Default empty.
     - ["aliases"]: A colon separated mapping of WWID to assign a friendly name.  Default empty.
-    - ["storage_type"]: Select a vendor-specific multipath template (equallogic, powervault, clariion, default)
+    - ["storage_type"]: Select a vendor-specific multipath template (equallogic, powervault, clariion, default, customized)
+
+#### Using the "customized" storage_type
+
+When setting ["storage_type"] = "customized", the following attributes come into play for the multipath.conf template:
+
+Default Attributes
+
+   * multipath (namespace)
+     - ["defaults"]["user_friendly_names"] = "yes"  
+        - use the bindings file  to assign a persistent and unique alias to the multipath)
+     - ["defaults"]["find_multipaths"] =  "yes"   
+        - multipath will only create a device if conditions are met. See multipath man page for more detail)
+
+Additional custom attributes can be added to the default and devices sections with the following format:
+
+   * multipath (namespace)
+     - ["defaults"]["parameter"]: Adds multipath parameter  to defaults section of multipath.conf
+     - ["devices"]["product name"]["parameter"]: Adds multipath parameter to devices section of multipath.conf
+
+Note: A valid device entry requires a product value, a vendor value, and one multipath parameter.  (The product value in the below example is "HSV200")
+
+Example:
+
+```json
+"normal": {
+  "multipath": {
+    "default": {
+    	"queue_without_daemon": "no"    },
+    "devices": {
+      "HSV200": {
+        "vendor": "\"HP\"",
+        "path_grouping_policy": "multibus"
+      }    }  }
+}
+```
 
 ## Usage
 
