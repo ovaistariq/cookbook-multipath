@@ -1,0 +1,47 @@
+# Template dropped by Chef for <%= node["fqdn"] %>
+# Local modifications will be overwritten
+
+defaults {
+  user_friendly_names yes
+  queue_without_daemon no
+}
+
+blacklist {
+  <% node["multipath"]["blacklist_wwid"].each do |bl_wwid| -%>
+  wwid <%= bl_wwid %>
+  <% end -%>
+  <% node["multipath"]["blacklist_regex"].each do |bl_device| -%>
+  devnode "<%= bl_device %>"
+  <% end -%>
+  devnode "^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]*"
+  devnode "^hd[a-z][[0-9]*]"
+  devnode "^cciss!c[0-9]d[0-9]*[p[0-9]*]"
+}
+
+devices {
+  ## Device attributes for Fujitsu ETERNUS
+  device {
+    vendor "FUJITSU"
+    product "*"
+    prio alua
+    path_grouping_policy group_by_prio
+    path_selector "round-robin 0"
+    failback immediate
+    no_path_retry 20
+    path_checker tur
+    dev_loss_tmo 2097151
+    fast_io_fail_tmo 1
+  }
+}
+
+<% unless node["multipath"]["aliases"].empty? -%>
+multipaths {
+<% node["multipath"]["aliases"].each do |alias_def| -%>
+  <% alias_arr = alias_def.split(/:/) -%>
+  multipath {
+    wwid <%= alias_arr[1] %>
+    alias <%= alias_arr[0] %>
+  }
+<% end -%>
+}
+<% end -%>

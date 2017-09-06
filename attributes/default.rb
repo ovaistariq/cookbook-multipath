@@ -25,7 +25,7 @@ case node['platform'] when "debian","ubuntu"
   default['multipath']['service'] = "multipath-tools"
 end
 
-default['multipath']['blacklist_regex'] = [ "^sd[a]$" ]
+default['multipath']['blacklist_regex'] = [ "^sd[a][[0-9]*]" ]
 default['multipath']['blacklist_wwid'] = Array.new
 default['multipath']['storage_type'] = "default"
 default['multipath']['aliases'] = Array.new
